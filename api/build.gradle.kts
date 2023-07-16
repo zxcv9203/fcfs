@@ -26,6 +26,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    // kafka 의존성 추가
+    implementation("org.springframework.kafka:spring-kafka")
+
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     // 테스트 코드에서 코루틴을 사용하기 위해 추가
