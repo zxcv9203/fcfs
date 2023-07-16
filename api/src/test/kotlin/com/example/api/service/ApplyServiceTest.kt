@@ -32,7 +32,7 @@ class ApplyServiceTest(
     @Test
     fun `여러명 응모`() = runTest{
         val threadCount = 1000
-        val want = 100
+        val want = 100L
         coroutineScope {
             for (userId in 1L..threadCount) {
                 launch(Dispatchers.Default) {
@@ -42,7 +42,6 @@ class ApplyServiceTest(
         }
 
         val got = couponRepository.count()
-
         assertThat(got).isEqualTo(want)
     }
 }
