@@ -12,7 +12,4 @@ data class Coupon(
     val id: Long = 0,
 
     val userId: Long
-) {
-
-
-}
+)
