@@ -40,6 +40,8 @@ class ApplyServiceTest(
                 }
             }
         }
+        // 전달된 토픽이 전부 처리될때까지 대기하기 위해 10초 슬립
+        Thread.sleep(10000)
 
         val got = couponRepository.count()
         assertThat(got).isEqualTo(want)
