@@ -46,4 +46,21 @@ class ApplyServiceTest(
         val got = couponRepository.count()
         assertThat(got).isEqualTo(want)
     }
+
+    @Test
+    fun `한명당 한개의 쿠폰만 발급`() = runTest{
+        val threadCount = 1000
+        coroutineScope {
+            for (i in 1L..threadCount) {
+                launch(Dispatchers.Default) {
+                    applyService.apply(1)
+                }
+            }
+        }
+        // 전달된 토픽이 전부 처리될때까지 대기하기 위해 10초 슬립
+        Thread.sleep(10000)
+
+        val got = couponRepository.count()
+        assertThat(got).isEqualTo(1)
+    }
 }
